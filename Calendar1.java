@@ -21,7 +21,7 @@ public class Calendar1 {
 		int sumSunday1 = 0;
 	    //// Write the necessary initialization code, and replace the condition
 	    //// of the while loop with the necessary condition 
-	 	while (year<2022) {
+	 	while (year<2000) {
 			for(int j = 1; j <= 12; j++){
 	 		for (int i=1; i<=nDaysInMonth(month,year); i++) {	
 				if (i == 1 && dayOfWeek == 1) {
