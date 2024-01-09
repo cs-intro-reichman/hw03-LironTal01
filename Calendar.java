@@ -18,7 +18,7 @@ public class Calendar {
 				if (dayOfWeek==1) {
                     dayOfWeek++;
 					if (yearCounter == year) {
-                        System.out.println(i+"/" + month + "/" + year + " is Sunday");
+                        System.out.println(i+"/" + month + "/" + year + " Sunday");
                     }
 						
 						
