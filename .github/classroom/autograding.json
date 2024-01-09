@@ -8,7 +8,7 @@
     "output": "b2c",
     "comparison": "exact",
     "timeout": 10,
-    "points": 1.
+    "points": 1.5
     },
     {
       "name": "LowerCase test 2",
