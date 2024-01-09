@@ -1,6 +1,3 @@
-/**
-* Computes the periodical payment necessary to re-pay a given loan.
-*/
 public class LoanCalc {
 	
 	static double epsilon = 0.001;  // The computation tolerance (estimation error)
@@ -8,7 +5,7 @@ public class LoanCalc {
 	
     /** 
      * Gets the loan data and computes the periodical payment.
-     * Expects to get three command-line arguments: sum of the loan (double),
+     * Expects to get three command-line arguments: sum of the l/oan (double),
      * interest rate (double, as a percentage), and number of payments (int).  
      */
 	public static void main(String[] args) {		
@@ -29,6 +26,8 @@ public class LoanCalc {
 		System.out.printf("%.2f", bisectionSolver(loan, rate, n, epsilon));
 		System.out.println();
 		System.out.println("number of iterations: " + iterationCounter);
+
+		
 	}
 	
 	/**
@@ -39,8 +38,27 @@ public class LoanCalc {
 	*/
 	// Side effect: modifies the class variable iterationCounter.
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {  
-    	// Replace the following statement with your code
-    	return 0;
+
+		double loanKeep = loan;
+		double increment = 0.001;
+		double annualPay = (loan/n) + increment;
+		iterationCounter = 0;
+
+    	while (loan > epsilon){
+			loan = loanKeep;
+			for (int i = 0; i<n; i++){
+				loan = (loan - annualPay)*((rate/100)+1);
+			}
+			annualPay = annualPay + increment;
+			iterationCounter++;
+		}
+
+		if (annualPay > loanKeep) {
+			System.out.println("Faild to find a solution" + annualPay);
+			
+		}
+
+    	return annualPay;
     }
     
     /**
@@ -51,8 +69,32 @@ public class LoanCalc {
 	*/
 	// Side effect: modifies the class variable iterationCounter.
     public static double bisectionSolver(double loan, double rate, int n, double epsilon) {  
-    	// Replace the following statement with your code
-    	return 0;
+    	double loanKeep = loan;
+		double upperBound = loan;
+		double lowerBound = 0;
+		double annualPay = 0;
+		iterationCounter = 0;
+    	
+		while (upperBound - lowerBound >=epsilon) {
+			annualPay = ((lowerBound+upperBound)/2);
+			loan = loanKeep;
+
+			if (endBalance(loan, rate, n, annualPay) > 0) {
+				lowerBound = annualPay;
+				
+			}
+			else {
+				upperBound = annualPay;
+			}
+
+			iterationCounter++;
+		}
+		
+		if(annualPay > loanKeep){
+			System.out.println("Faild to find a solution" + annualPay);
+		}
+
+		return annualPay;
     }
 	
 	/**
@@ -60,7 +102,17 @@ public class LoanCalc {
 	* interest rate (as a percentage), the number of periods (n), and the periodical payment.
 	*/
 	private static double endBalance(double loan, double rate, int n, double payment) {
-		// Replace the following statement with your code
-    	return 0;
+		
+		double leftOfLoan = loan;
+		double temp =leftOfLoan;
+		for(int i=0; i<n; i++){
+				temp = leftOfLoan;
+				leftOfLoan = (leftOfLoan-payment)*(1 + rate/100);
+
+			}
+			
+			return leftOfLoan;
+    	
+		}
+		
 	}
-}
