@@ -16,7 +16,7 @@ public class UniqueChars {
        int n = 0;
 
        for (int i = 0; i<s.length(); i++){
-           n=ans.indexOf(s.charAt(i));
+           n=ans.indexOf(s.charAt(i)); // #feedback - you can remove this "n" vairable and call the indexOf directly inside the "if".
            if (n>=0 && s.charAt(i) != ' ') {
             ans = ans;
            }
