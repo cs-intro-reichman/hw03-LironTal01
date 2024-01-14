@@ -13,14 +13,14 @@ public class LowerCase {
     public static String lowerCase(String s) {
        int i = 0 ;
        String ans = "";
-       while (i<s.length()) {
+       while (i<s.length()) { // #feedback - it is better to use "for" loops for iterating on a string.
         char ch = s.charAt(i);
         if (ch >= 65 && ch <=90) {
             ans = ans +(char)(s.charAt(i)+32);
            
         }
 
-        else if (ch == ' ' || ch>90 || ch<65){
+        else if (ch == ' ' || ch>90 || ch<65){ // #feedback - this "if" is not needed since we know here that we don't have a letter with upper case.
             ans = ans + ch;
         }
 

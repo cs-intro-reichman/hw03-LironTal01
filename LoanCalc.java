@@ -44,6 +44,7 @@ public class LoanCalc {
 		double annualPay = (loan/n) + increment;
 		iterationCounter = 0;
 
+	    // #feedback - you should have called endBalance here to calculate the balance instead of having another "for" loop here.
     	while (loan > epsilon){
 			loan = loanKeep;
 			for (int i = 0; i<n; i++){
@@ -71,7 +72,7 @@ public class LoanCalc {
     public static double bisectionSolver(double loan, double rate, int n, double epsilon) {  
     	double loanKeep = loan;
 		double upperBound = loan;
-		double lowerBound = 0;
+		double lowerBound = 0; // #feedback - the lower bound can be loan/n .
 		double annualPay = 0;
 		iterationCounter = 0;
     	
@@ -106,7 +107,7 @@ public class LoanCalc {
 		double leftOfLoan = loan;
 		double temp =leftOfLoan;
 		for(int i=0; i<n; i++){
-				temp = leftOfLoan;
+				temp = leftOfLoan; // #feedback - this temp is not needed since you don't use it.
 				leftOfLoan = (leftOfLoan-payment)*(1 + rate/100);
 
 			}

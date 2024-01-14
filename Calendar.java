@@ -11,7 +11,8 @@ public class Calendar {
         int yearCounter = 1900;
 	
 		int sumSunday1 = 0;
-	   
+
+		// #feedback - please note the indentation here. Everything should be indented according to the scopes (loops, conditions, etc.).
         while (yearCounter <= year) {
 			for(int j = 1; j <= 12; j++){
 	 		for (int i=1; i<=nDaysInMonth(month,yearCounter); i++) {	
@@ -76,6 +77,8 @@ public class Calendar {
 		 
     // Returns true if the given year is a leap year, false otherwise.
 	private static boolean isLeapYear(int year) {
+	// #feedback - this function can become one line (without any variables) -
+	// return ((year % 400) == 0) || (((year % 4) == 0) && ((year % 100) != 0))
 		boolean isLeapYear;
 		// Checks if the year is divisible by 400
 			isLeapYear = ((year % 400) == 0);
@@ -95,6 +98,8 @@ public class Calendar {
 
 		if(isLeapYear(year)){
 			switch (month) {
+			// #feedback - if you want to avoid many cases, you can just set 31 as the default and handle all the other cases.
+			// #feedback - you can return the days directly instead of setting numOfDays and only then returning it.
 				case 1: numOfDays = 31;
 						break;
 				case 2: numOfDays = 29;
